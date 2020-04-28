@@ -1,0 +1,50 @@
+* {
+    font-family: 'Manrope', sans-serif;
+    color: white;
+}
+
+body {
+    background-color: #525252;
+}
+
+h1, h4 {
+    text-align: center;
+}
+
+table {
+    width: 75%;
+    border-collapse: collapse;
+}
+  
+th {
+    background-color: #ca3e47;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #414141;
+}
+
+table, th, td {
+    align-content: center;
+    border: 1px solid black;
+}
+
+table.center {
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+var.severe {
+    color: red;
+}
+
+var.medium {
+    color: yellow;
+    font-style: normal;
+}
+
+var.fine {
+    font-style: normal;
+    color: green;
+}
