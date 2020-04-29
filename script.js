@@ -45,13 +45,12 @@ async function main() {
     })
 
     let currentState;
-    await $.getJSON('http://ip-api.com/json', data => {
+    await $.getJSON('https://freegeoip.app/json/', data => {
         console.log(data);
-        currentState = data.regionName;
+        currentState = data.region_name;
     })
 
     console.log(covidData);
-    console.log(stateData);
 
     let showndata
     try {
@@ -72,7 +71,8 @@ async function main() {
             active: entry.active,
             confirmed: entry.confirmed,
         })
-        total += entry.active;
+        total += entry.confirmed;
+        console.log(total);
         index++;
     })
     console.log(array1);
@@ -82,14 +82,14 @@ async function main() {
     let data = ["District", "Active", "Confirmed"]
     generateTableHead(table, data);
     generateTable(table, array1);
-    if (total >= 850) {
+    if (total >= 1250) {
         document.getElementById("stat").innerHTML = `In this state, the amount of COVID-19 is 
         <var class=\"severe\">very high</var>. Please stay indoors. Total: ${total}`;
-    } else if (total >= 450) {
+    } else if (total >= 750) {
         document.getElementById("stat").innerHTML = `In this state, the amount of COVID-19 is 
         <var class=\"medium\">less severe</var>. You still must exercise caution, but it is more lenient in
         this category. Total: ${total}`;
-    } else if (total >= 125) {
+    } else if (total >= 350) {
         document.getElementById("stat").innerHTML = `In this state, the amount of COVID-19 is 
         <var class=\"fine\">ok</var>. You must still stay inside to prevent further spread. Total: ${total}`;
     } else {

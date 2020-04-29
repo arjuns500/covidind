@@ -19,21 +19,6 @@
     <!-- Generated from script.js -->
 </table>
 <p id="demo"></p>
-<script>
-    var x = document.getElementById("demo");
-    function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-        } else {
-            x.innerHTML = "Geolocation is not supported by this browser.";
-        }
-    }
-
-    function showPosition(position) {
-        x.innerHTML = "Latitude: " + position.coords.latitude +
-            "<br>Longitude: " + position.coords.longitude;
-    }
-</script>
 <p>Resources: <br><a href="https://colorhunt.co/palette/149559">Color Palette</a><br />
     <a href="https://covid19india.org">Covid-19 API</a><br>
     <a href="https://ip-api.com">Location API</a></p>
