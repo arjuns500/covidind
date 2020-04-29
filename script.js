@@ -1,5 +1,21 @@
 var stateData;
 var covidData;
+let coords;
+
+function getLocation(callback) {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(callback);
+    } else {
+        console.log('awdij');
+    }
+}
+
+function savePos(pos) {
+    coords = {
+        lat: pos.coords.latitude,
+        long: pos.coords.longitude
+    };
+}
 
 function generateTableHead(table, data) {
     let thead = table.createTHead();
@@ -24,28 +40,19 @@ function generateTable(table, data) {
 }
 
 async function main() {
-    await fetch('https://api.covid19india.org/state_district_wise.json')
-        .then(response => {
-            return response.json();
-        })
-        .then(data => covidData = data)
-        .catch(err => {
-            console.log(`Error: ${err.message}`)
-        })
+    await $.getJSON('https://api.covid19india.org/state_district_wise.json', data => {
+        covidData = data;
+    })
 
-    await fetch('http://ip-api.com/json/')
-        .then((response) => {
-            return response.json();
-        })
-        .then(data => stateData = data)
-        .catch(err => {
-            console.log(`Error: ${err.message}`)
-        })
+    let currentState;
+    await $.getJSON('http://ip-api.com/json', data => {
+        console.log(data);
+        currentState = data.regionName;
+    })
 
     console.log(covidData);
     console.log(stateData);
 
-    let currentState = stateData.regionName;
     let showndata
     try {
         showndata = covidData[currentState]['districtData'];

@@ -4,6 +4,8 @@
 <body>
 
     <head>
+        <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+            integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap" rel="stylesheet">
         <title>Covid-19</title>
         <link rel="stylesheet" href="./style.css">
@@ -12,10 +14,26 @@
 </body>
 <script src="./script.js"></script>
 <h1>COVID-19 In Your State</h1>
-<h4 id="stat">Fetching stats...</h4>
+<h4 id="stat">Fetching stats...</h4 <table cellpadding="10" class="center">
 <table cellpadding="10" class="center">
     <!-- Generated from script.js -->
 </table>
+<p id="demo"></p>
+<script>
+    var x = document.getElementById("demo");
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function showPosition(position) {
+        x.innerHTML = "Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude;
+    }
+</script>
 <p>Resources: <br><a href="https://colorhunt.co/palette/149559">Color Palette</a><br />
     <a href="https://covid19india.org">Covid-19 API</a><br>
     <a href="https://ip-api.com">Location API</a></p>
