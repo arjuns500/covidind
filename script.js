@@ -2,21 +2,6 @@ var stateData;
 var covidData;
 let coords;
 
-function getLocation(callback) {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(callback);
-    } else {
-        console.log('awdij');
-    }
-}
-
-function savePos(pos) {
-    coords = {
-        lat: pos.coords.latitude,
-        long: pos.coords.longitude
-    };
-}
-
 function generateTableHead(table, data) {
     let thead = table.createTHead();
     let row = thead.insertRow();
@@ -83,14 +68,14 @@ async function main() {
     generateTableHead(table, data);
     generateTable(table, array1);
     if (total >= 1250) {
-        document.getElementById("stat").innerHTML = `In this state, the amount of COVID-19 is 
+        document.getElementById("stat").innerHTML = `In this state, the amount of COVID-19 is
         <var class=\"severe\">very high</var>. Please stay indoors. Total: ${total}`;
     } else if (total >= 750) {
-        document.getElementById("stat").innerHTML = `In this state, the amount of COVID-19 is 
+        document.getElementById("stat").innerHTML = `In this state, the amount of COVID-19 is
         <var class=\"medium\">less severe</var>. You still must exercise caution, but it is more lenient in
         this category. Total: ${total}`;
     } else if (total >= 350) {
-        document.getElementById("stat").innerHTML = `In this state, the amount of COVID-19 is 
+        document.getElementById("stat").innerHTML = `In this state, the amount of COVID-19 is
         <var class=\"fine\">ok</var>. You must still stay inside to prevent further spread. Total: ${total}`;
     } else {
         document.getElementById("stat").innerHTML = `This state has managed to get their COVID-19
