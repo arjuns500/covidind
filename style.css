@@ -1,50 +1,51 @@
-* {
-    font-family: 'Manrope', sans-serif;
-    color: white;
+*:not(h1) {
+  font-family: 'Manrope', sans-serif;
+  font-size: large;
+  color: white;
 }
 
 body {
-    background-color: #525252;
+  background-color: #525252;
 }
 
 h1, h4 {
-    text-align: center;
+  text-align: center;
 }
 
 table {
-    width: 75%;
-    border-collapse: collapse;
+  width: 75%;
+  border-collapse: collapse;
 }
-  
+
 th {
-    background-color: #ca3e47;
-    color: white;
+  background-color: #ca3e47;
+  color: white;
 }
 
 tr:nth-child(even) {
-    background-color: #414141;
+  background-color: #414141;
 }
 
 table, th, td {
-    align-content: center;
-    border: 1px solid black;
+  align-content: center;
+  border: 1px solid black;
 }
 
 table.center {
-    margin-left:auto; 
-    margin-right:auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 var.severe {
-    color: red;
+  color: red;
 }
 
 var.medium {
-    color: yellow;
-    font-style: normal;
+  color: yellow;
+  font-style: normal;
 }
 
 var.fine {
-    font-style: normal;
-    color: green;
+  font-style: normal;
+  color: green;
 }
