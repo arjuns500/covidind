@@ -30,25 +30,27 @@ async function main() {
       covidData = data;
     })
     .fail(() => {
-      document.getElementById("stat").innerHTML = `Oops! There was an error when fetching the API data.`;
+      document.getElementById("stat").innerHTML =
+      `Oops! There was an error when fetching the API data.`;
     })
 
   let currentState;
-  await $.getJSON('https://freegeoip.app/json/', data => {
+  await $.getJSON('https://api.ipstack.com/check?access_key=<API KEY>', data => {
       currentState = data.region_name;
     })
     .fail(() => {
-      document.getElementById("stat").innerHTML = `Oops! There was an error when locating the client.`;
+      document.getElementById("stat").innerHTML =
+      `Oops! There was an error when locating the client.`;
     })
 
 
   console.log(covidData);
 
   let showndata
-  try {
     showndata = covidData[currentState]['districtData'];
-  } catch (error) {
-    document.getElementById("stat").innerHTML = `Oops! There was an error when indexing the API. Error: ${error.message}`;
+    if (showndata = undefined) {
+    document.getElementById("stat").innerHTML =
+    `Oops! There was an error when indexing the API. Error: ${error.message}`;
   }
   let array1 = [];
   let names = [];
@@ -77,18 +79,25 @@ async function main() {
   generateTableHead(table, data);
   generateTable(table, array1);
   if (total >= 1250) {
-    document.getElementById("stat").innerHTML = `In this state, the amount of COVID-19 is
-        <var class=\"severe\">very high</var>. Please stay indoors. Total: ${total}`;
+    document.getElementById("stat").innerHTML =
+        `In this state, the amount of COVID-19 is <var class=\"severe\">very high</var>.
+        Please stay indoors. Total: ${total}`;
   } else if (total >= 750) {
-    document.getElementById("stat").innerHTML = `In this state, the amount of COVID-19 is
-        <var class=\"medium\">less severe</var>. You still must exercise caution, but it is more lenient in
+    document.getElementById("stat").innerHTML =
+        `In this state, the amount of COVID-19 is<var class=\"medium\">less severe</var>.
+        You still must exercise caution, but it is more lenient in
         this category. Total: ${total}`;
   } else if (total >= 350) {
-    document.getElementById("stat").innerHTML = `In this state, the amount of COVID-19 is
-        <var class=\"fine\">ok</var>. You must still stay inside to prevent further spread. Total: ${total}`;
+    document.getElementById("stat").innerHTML =
+        `In this state, the amount of COVID-19 is
+        <var class=\"fine\">ok</var>.
+        You must still stay inside to prevent further spread.
+        Total: ${total}`;
   } else {
-    document.getElementById("stat").innerHTML = `This state has managed to get their COVID-19
-        spread down. This is <var class=\"fine\">very good</var>. Self isolation will still help further. Total: ${total}`;
+    document.getElementById("stat").innerHTML =
+        `This state has managed to get their COVID-19 spread down.
+        This is <var class=\"fine\">very good</var>. Self isolation will still help further.
+        Total: ${total}`;
   }
 }
 
