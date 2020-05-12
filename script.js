@@ -7,7 +7,7 @@ function generateTableHead(table, data) {
     let row = thead.insertRow();
     for (let key of data) {
         let th = document.createElement("th")
-        let text = document.createTextNode(key)
+        let text = document.createTextNode(key);
         th.appendChild(text);
         row.appendChild(th);
     }
@@ -37,6 +37,7 @@ async function main() {
     let currentState;
     await $.getJSON('https://freegeoip.app/json/', data => {
         currentState = data.region_name;
+        console.log(data)
     })
         .fail(() => {
             document.getElementById("stat").innerHTML =
@@ -45,6 +46,7 @@ async function main() {
 
 
     console.log(covidData);
+    console.log(currentState)
 
     let showndata
     try {
